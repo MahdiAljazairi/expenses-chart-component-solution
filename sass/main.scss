@@ -1,0 +1,414 @@
+@import url(https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;700);
+
+*, ::before, ::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: grid;
+  grid-template: "... .... ..." 2fr
+                 "... main ..." auto
+                 "... .... ..." 1fr
+                 "... attr ..." 4rem
+                 "... .... ..." 1fr
+                / 1fr auto 1fr;
+  min-height: 100vh;
+  background: #f8e9dd; // Cream
+  color: #93867b; // Medium Brown
+  font-family: DMSans, sans-serif;
+  font-size: .9rem;
+}
+
+a {
+  color: #382314; // Dark Brown
+  outline-offset: 0.4em;
+  transition: color                 100ms,
+              text-decoration-color 100ms;
+  
+  &:hover {
+    color: #ec775f; // Soft Red
+    text-decoration-color: transparent;
+  }
+}
+
+h1, h2, h3 {
+  color: #382314; // Dark Brown
+}
+
+h2 {
+  font-size: 1.5rem;
+  margin-bottom: .75rem;
+}
+
+hr {
+  border: 1px solid rgba(147,134,123,.2); // Medium Brown 20%
+}
+
+.figure {
+  font-weight: 700;
+  color: #382314; // Dark Brown
+  
+  &.medium {
+    font-size: 1.45rem;
+    margin-top: .5rem;
+  }
+  
+  &.big {
+    font-size: 1.8rem;
+    line-height: 1;
+    margin-top: .6rem;
+  }
+}
+
+main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+  margin-top: 2rem;
+}
+
+noscript, #error-msg {
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0; bottom: 0;
+  left: 0; right: 0;
+  background: rgba(0,0,0,.5); // Black 50%
+  z-index: 1;
+  
+  div {
+    color: #fffaf5; // Very Pale Orange
+    background: #ec775f; // Soft Red
+    font-weight: 700;
+    padding: .7em 1.5em;
+    text-align: center;
+    border-radius: .7rem;
+    box-shadow: 0 0 1rem rgba(0,0,0,.2); // Black 20%
+    line-height: 1.5;
+  }
+}
+
+noscript {
+  display: flex;
+  font-size: 2rem;
+  
+  b {
+    font-size: 3rem;
+  }
+}
+
+#error-msg {
+  display: none;
+  font-size: 1.5rem;
+  
+  &.show {
+    display: flex;
+  }
+}
+
+#balance, #expenses {
+  padding: 1.5rem 1.25rem;
+  border-radius: .7rem;
+  
+  span {
+    display: block;
+  }
+}
+
+#balance {
+  display: flex;
+  justify-content: space-between;
+  background: #ec775f; // Soft Red
+  
+  span {
+    color: #fffaf5; // Very Pale Orange
+  }
+  
+  img {
+    margin-right: .25rem;
+    width: 3.8rem;
+  }
+}
+
+#expenses {
+  background: #fffaf5; // Very Pale Orange
+  padding-bottom: 1.75rem;
+  
+  hr {
+    margin-bottom: 1.5rem;
+  }
+  
+  .total {
+    display: flex;
+    justify-content: space-between;
+    
+    .right {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-end;
+    }
+  }
+}
+
+#chart {
+  display: block;
+  
+  tbody {
+    display: flex;
+    justify-content: space-between;
+    height: 15rem;
+  }
+  
+  tr {
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0 .4rem;
+    cursor: pointer;
+    
+    &:first-child {
+      padding-left: 0;
+    }
+    
+    &:last-child {
+      padding-right: 0;
+    }
+    
+    &:hover, &:focus-visible {
+      
+      td {
+        background: rgba(236,119,95,.7); // Soft Red 70%
+        
+        &.today {
+          background: rgba(118,181,188,.7); // Cyan 70%
+        }
+      }
+      
+      .bubble {
+        opacity: 1;
+        transform: translate(50%,-.25rem);
+      }
+    }
+    
+    &:focus-visible {
+      outline: none;
+      
+      td {
+        box-shadow: 0 0 0 2px #382314; // Dark Brown
+      }
+    }
+  }
+  
+  th {
+    font-weight: 400;
+    font-size: .8rem;
+    padding: .6rem 0 1.5rem;
+  }
+  
+  td, .bubble {
+    border-radius: .25rem;
+  }
+  
+  td {
+    transition: background-color 200ms,
+                height           600ms;
+    background: #ec775f; // Soft Red
+    width: 2rem;
+    height: .4rem;
+    position: relative;
+    
+    &.today {
+      background: #76b5bc; // Cyan
+    }
+  }
+  
+  .bubble {
+    opacity: 0;
+    background: #382314; // Dark Brown
+    color: #fffaf5; // Very Pale Orange
+    padding: .4rem;
+    font-size: .8rem;
+    position: absolute;
+    bottom: 100%; right: 50%;
+    transform: translateX(50%);
+    transition: opacity   200ms,
+                transform 200ms;
+    white-space: nowrap;
+  }
+}
+
+.attribution {
+  grid-area: attr;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: .7rem;
+  color: #382314; // Dark Brown
+}
+
+//---------------------------------------------------------------------//
+
+@media (min-width: 480px){ // Small Tablet
+  body {
+    font-size: 1rem;
+  }
+  
+  h2 {
+    font-size: 1.75rem;
+  }
+  
+  .figure {
+    
+    &.medium {
+      font-size: 1.75rem;
+      margin-top: .4rem;
+    }
+    
+    &.big {
+      font-size: 2.3rem;
+      margin-top: .4rem;
+    }
+  }
+  
+  main {
+    row-gap: 1.25rem;
+  }
+  
+  #balance, #expenses,
+  noscript div, #error-msg div {
+    border-radius: 1rem;
+  }
+  
+  #error-msg div {
+    font-size: 1.75rem;
+  }
+  
+  #balance {
+    padding: 1.75rem 1.5rem 1.5rem;
+    
+    img {
+      margin-right: .4rem;
+      width: 4.25rem;
+    }
+  }
+  
+  #expenses {
+    padding: 1.75rem 2rem 2rem;
+  }
+  
+  #chart {
+    
+    tbody {
+      height: 15.5rem;
+    }
+    
+    tr {
+      padding: 0 .48rem;
+    }
+    
+    td {
+      width: 2.5rem;
+    }
+  }
+}
+
+@media (min-width: 600px){ // Desktop & Big Tablet
+  body {
+    font-size: 1.125rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    margin-bottom: 1.125rem;
+  }
+  
+  .figure {
+    
+    &.medium {
+      font-size: 2rem;
+    }
+    
+    &.big {
+      font-size: 3rem;
+      margin-top: .3rem;
+    }
+  }
+  
+  main {
+    row-gap: 1.5rem;
+  }
+  
+  #balance, #expenses,
+  noscript div, #error-msg div {
+    border-radius: 1.3rem;
+  }
+  
+  noscript div, #error-msg div {
+    padding: .7em 1.5em;
+    line-height: 1.7;
+  }
+  
+  #error-msg div {
+    font-size: 2rem;
+  }
+  
+  #balance {
+    padding: 1.75rem 2rem 1.5rem;
+    
+    img {
+      margin-right: .5rem;
+      width: 4.5rem;
+    }
+  }
+  
+  #expenses {
+    padding: 2rem 2.5rem 3.25rem;
+    
+    hr {
+      margin-bottom: 2rem;
+    }
+  }
+  
+  #chart {
+    
+    tbody {
+      height: 16rem;
+    }
+    
+    tr {
+      padding: 0 .56rem;
+      
+      &:hover, &:focus-visible {
+        
+        .bubble {
+          transform: translate(50%,-.4rem);
+        }
+      }
+    }
+    
+    th {
+      font-size: 1rem;
+      padding: .5rem 0 2rem;
+    }
+    
+    td, .bubble {
+      border-radius: .3rem;
+    }
+    
+    td {
+      width: 3.125rem;
+    }
+    
+    .bubble {
+      padding: .5rem;
+      font-size: 1.125rem;
+    }
+  }
+  
+  .attribution {
+    font-size: .8rem;
+  }
+}

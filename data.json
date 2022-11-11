@@ -1,0 +1,23 @@
+{
+  "currentBalance": 921.48,
+  
+  "currentWeek": {
+    "mon": 17.45,
+    
+    "tue": 34.91,
+    
+    "wed": 52.36,
+    
+    "thu": 31.07,
+    
+    "fri": 23.39,
+    
+    "sat": 43.28,
+    
+    "sun": 25.48
+  },
+  
+  "currentMonthTotal": 478.33,
+  
+  "lastMonthTotal": 467.12
+}

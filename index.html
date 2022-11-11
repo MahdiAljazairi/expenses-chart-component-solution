@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <title>Frontend Mentor | Expenses chart component</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <noscript>
+    <div><b>Javascript</b><br>is required</div>
+  </noscript>
+  
+  <div id="error-msg">
+    <div>Something went wrong!<br>Please refresh the page</div>
+  </div>
+  
+  <main>
+    <section id="balance">
+      <div class="left">
+        <span>My balance</span>
+        <span id="amount-balance" class="figure medium">---</span>
+      </div>
+      <img src="images/logo.svg" alt="">
+    </section>
+    
+    <section id="expenses">
+      <section class="spendings">
+        <h2>Spending - Last 7 days</h2>
+        
+        <table id="chart">
+          <tbody>
+            <tr tabindex="0">
+              <th>mon</th>
+              <td id="bar-mon"><span id="amount-mon" class="figure bubble">---</span></td>
+            </tr>
+            
+            <tr tabindex="0">
+              <th>tue</th>
+              <td id="bar-tue"><span id="amount-tue" class="figure bubble">---</span></td>
+            </tr>
+            
+            <tr tabindex="0">
+              <th>wed</th>
+              <td id="bar-wed"><span id="amount-wed" class="figure bubble">---</span></td>
+            </tr>
+            
+            <tr tabindex="0">
+              <th>thu</th>
+              <td id="bar-thu"><span id="amount-thu" class="figure bubble">---</span></td>
+            </tr>
+            
+            <tr tabindex="0">
+              <th>fri</th>
+              <td id="bar-fri"><span id="amount-fri" class="figure bubble">---</span></td>
+            </tr>
+            
+            <tr tabindex="0">
+              <th>sat</th>
+              <td id="bar-sat"><span id="amount-sat" class="figure bubble">---</span></td>
+            </tr>
+            
+            <tr tabindex="0">
+              <th>sun</th>
+              <td id="bar-sun"><span id="amount-sun" class="figure bubble">---</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+      
+      <hr>
+      
+      <section class="total">
+        <div class="left">
+          <span>Total this month</span>
+          <span id="amount-total" class="figure big">---</span>
+        </div>
+        
+        <div class="right">
+          <span id="percent-diff" class="figure">---</span>
+          <span>from last month</span>
+        </div>
+      </section>
+    </section>
+  </main>
+  
+  <script src="script.js"></script>
+  
+  <!-- ATTRIBUTION -->
+  
+  <div class="attribution">
+    Challenge by&nbsp;<a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by&nbsp;<a href="https://www.frontendmentor.io/profile/MahdiAljazairi" target="_blank">Mahdi Aljaza'iri</a>.
+  </div>
+</body>
+</html>
+
+
